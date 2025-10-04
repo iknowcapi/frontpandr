@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+const API_URL = process.env.REACT_APP_API_URL || 'https://deadpandr.onrender.com';import React, { useState } from 'react';
 import { Download, Loader2, Zap } from 'lucide-react';
 
 const API_URL = 'https://deadpandr.onrender.com';
