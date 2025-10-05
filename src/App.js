@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Loader2, Zap } from 'lucide-react';
 
-const API_URL = 'https://deadpandr.onrender.com';
+const API_URL = process.env.REACT_APP_API_URL || 'https://deadpandr.onrender.com';
 
 function App() {
   const [topic, setTopic] = useState('');
@@ -120,18 +120,18 @@ function App() {
         backgroundImage: 'url(/logo512.png)',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
+        backgroundSize: '300px',
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Semi-transparent overlay to make content readable while showing logo */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+      {/* Semi-transparent overlay */}
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
       
       {/* Content */}
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto mb-8">
           <div className="text-center py-8">
-            <h1 className="text-6xl font-black mb-2">
+            <h1 className="text-4xl md:text-6xl font-black mb-2">
               <span className="text-gray-100">dead</span>
               <span className="text-pink-500">pandr</span>
             </h1>
@@ -141,7 +141,7 @@ function App() {
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="bg-gray-800/90 backdrop-blur-md rounded-xl p-6 shadow-2xl border border-gray-700">
+            <div className="bg-gray-800 rounded-xl p-6 shadow-2xl border border-gray-700">
               <h2 className="text-xl font-bold mb-4 text-pink-400">Settings</h2>
               
               <div className="mb-4">
@@ -150,7 +150,7 @@ function App() {
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  className="w-full bg-gray-900/90 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                   placeholder="What shall we joke about?"
                 />
               </div>
@@ -160,7 +160,7 @@ function App() {
                 <select
                   value={tone}
                   onChange={(e) => setTone(e.target.value)}
-                  className="w-full bg-gray-900/90 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   <option>Default</option>
                   <option>Absurdist</option>
@@ -177,7 +177,7 @@ function App() {
                 <select
                   value={outputType}
                   onChange={(e) => setOutputType(e.target.value)}
-                  className="w-full bg-gray-900/90 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   <option>One-liners</option>
                   <option>Routines</option>
@@ -192,7 +192,7 @@ function App() {
                   <select
                     value={transitionType}
                     onChange={(e) => setTransitionType(e.target.value)}
-                    className="w-full bg-gray-900/90 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                   >
                     <option>None</option>
                     <option>False Segue</option>
@@ -224,7 +224,7 @@ function App() {
                 <select
                   value={darkness}
                   onChange={(e) => setDarkness(e.target.value)}
-                  className="w-full bg-gray-900/90 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   {darknessLevels.map((level) => (
                     <option key={level} value={level}>{level}</option>
@@ -286,10 +286,10 @@ function App() {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-gray-800/90 backdrop-blur-md rounded-xl p-6 shadow-2xl border border-gray-700 min-h-[500px]">
+            <div className="bg-gray-800 rounded-xl p-6 shadow-2xl border border-gray-700 min-h-[500px]">
               <h2 className="text-xl font-bold mb-4 text-pink-400">Output</h2>
               
-              <div className="bg-gray-900/90 rounded-lg p-4 min-h-[400px] max-h-[600px] overflow-y-auto border border-gray-700">
+              <div className="bg-gray-900 rounded-lg p-4 min-h-[400px] max-h-[600px] overflow-y-auto border border-gray-700">
                 {jokes.length > 0 ? (
                   <div className="space-y-4">
                     {jokes.map((joke, index) => (
