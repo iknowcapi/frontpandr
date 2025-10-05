@@ -124,8 +124,8 @@ function App() {
         backgroundAttachment: 'fixed'
       }}
     >
-      {/* Dark overlay to make content readable */}
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+      {/* Semi-transparent overlay to make content readable while showing logo */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
       
       {/* Content */}
       <div className="relative z-10">
