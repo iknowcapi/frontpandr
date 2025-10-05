@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Download, Loader2, Zap } from 'lucide-react';
 
-const API_URL = process.env.REACT_APP_API_URL || 'https://deadpandr.onrender.com';
+const API_URL = 'https://deadpandr.onrender.com';
 
 function App() {
   const [topic, setTopic] = useState('');
@@ -114,18 +114,16 @@ function App() {
   };
 
   return (
-    <div 
-      className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black text-gray-100 p-8 relative"
-      style={{
-        backgroundImage: 'url(/logo512.png)',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: '150px',
-        backgroundAttachment: 'fixed'
-      }}
-    >
-      {/* Semi-transparent overlay */}
-      <div className="absolute inset-0 bg-black/20 backdrop-blur-[1px]"></div>
+    <div className="min-h-screen bg-black text-gray-100 p-4 md:p-8 relative overflow-hidden">
+      {/* Background logo positioned centrally */}
+      <div 
+        className="absolute inset-0 bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/logo512.png)',
+          backgroundSize: '50%',
+          opacity: 0.4
+        }}
+      />
       
       {/* Content */}
       <div className="relative z-10">
@@ -141,7 +139,7 @@ function App() {
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
           <div className="space-y-6">
-            <div className="bg-gray-800 rounded-xl p-6 shadow-2xl border border-gray-700">
+            <div className="bg-gray-800/70 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-gray-700">
               <h2 className="text-xl font-bold mb-4 text-pink-400">Settings</h2>
               
               <div className="mb-4">
@@ -150,7 +148,7 @@ function App() {
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900/70 backdrop-blur-sm border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                   placeholder="What shall we joke about?"
                 />
               </div>
@@ -160,7 +158,7 @@ function App() {
                 <select
                   value={tone}
                   onChange={(e) => setTone(e.target.value)}
-                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900/70 backdrop-blur-sm border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   <option>Default</option>
                   <option>Absurdist</option>
@@ -177,7 +175,7 @@ function App() {
                 <select
                   value={outputType}
                   onChange={(e) => setOutputType(e.target.value)}
-                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900/70 backdrop-blur-sm border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   <option>One-liners</option>
                   <option>Routines</option>
@@ -192,7 +190,7 @@ function App() {
                   <select
                     value={transitionType}
                     onChange={(e) => setTransitionType(e.target.value)}
-                    className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                    className="w-full bg-gray-900/70 backdrop-blur-sm border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                   >
                     <option>None</option>
                     <option>False Segue</option>
@@ -224,7 +222,7 @@ function App() {
                 <select
                   value={darkness}
                   onChange={(e) => setDarkness(e.target.value)}
-                  className="w-full bg-gray-900 border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
+                  className="w-full bg-gray-900/70 backdrop-blur-sm border border-gray-600 rounded-lg px-4 py-2 text-gray-100 focus:outline-none focus:ring-2 focus:ring-pink-500"
                 >
                   {darknessLevels.map((level) => (
                     <option key={level} value={level}>{level}</option>
@@ -268,7 +266,7 @@ function App() {
                 <button
                   onClick={() => handleSave('txt')}
                   disabled={jokes.length === 0}
-                  className="flex-1 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                  className="flex-1 bg-gray-700/70 hover:bg-gray-600 disabled:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
                 >
                   <Download size={16} />
                   Save TXT
@@ -276,7 +274,7 @@ function App() {
                 <button
                   onClick={() => handleSave('pdf')}
                   disabled={jokes.length === 0}
-                  className="flex-1 bg-gray-700 hover:bg-gray-600 disabled:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
+                  className="flex-1 bg-gray-700/70 hover:bg-gray-600 disabled:bg-gray-800 text-white font-medium py-2 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2"
                 >
                   <Download size={16} />
                   Save PDF
@@ -286,10 +284,10 @@ function App() {
           </div>
 
           <div className="space-y-6">
-            <div className="bg-gray-800 rounded-xl p-6 shadow-2xl border border-gray-700 min-h-[500px]">
+            <div className="bg-gray-800/70 backdrop-blur-sm rounded-xl p-6 shadow-2xl border border-gray-700 min-h-[500px]">
               <h2 className="text-xl font-bold mb-4 text-pink-400">Output</h2>
               
-              <div className="bg-gray-900 rounded-lg p-4 min-h-[400px] max-h-[600px] overflow-y-auto border border-gray-700">
+              <div className="bg-gray-900/70 backdrop-blur-sm rounded-lg p-4 min-h-[400px] max-h-[600px] overflow-y-auto border border-gray-700">
                 {jokes.length > 0 ? (
                   <div className="space-y-4">
                     {jokes.map((joke, index) => (
