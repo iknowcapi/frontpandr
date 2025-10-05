@@ -120,8 +120,8 @@ function App() {
         className="absolute inset-0 bg-center bg-no-repeat"
         style={{
           backgroundImage: 'url(/logo512.png)',
-          backgroundSize: '50%',
-          opacity: 0.4
+          backgroundSize: 'min(80vw, 600px)',
+          opacity: 0.5
         }}
       />
       
