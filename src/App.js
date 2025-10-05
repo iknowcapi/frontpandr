@@ -120,7 +120,7 @@ function App() {
         backgroundImage: 'url(/logo512.png)',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundSize: '300px',
+        backgroundSize: '150px',
         backgroundAttachment: 'fixed'
       }}
     >
